@@ -1,0 +1,4 @@
+[[redirects]]
+form = "/*"
+to =  "/index.php"
+status = 200
