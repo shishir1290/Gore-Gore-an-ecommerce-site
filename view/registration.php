@@ -3,24 +3,26 @@
   <head>
     <title>Registration Form</title>
     <link rel="stylesheet" type="text/css" href="registration.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/all.css">
   </head>
   <body>
     <?php include('header.php'); ?>
     <div class="form-container">
       <h1 align="center">Registration Form</h1>
-      <form method="post" action="../controlar/registrationAction.php" enctype="multipart/form-data" novalidate>
+      <p id="registrationAlert"></p>
+      <form method="post" action="../controller/registrationAction.php" enctype="multipart/form-data" novalidate id="registrationform" onsubmit="return validateForm();">
+        
         <div class="form-group">
           <label for="first_name">First Name</label>
-          <input type="text" id="first_name" name="first_name" required>
+          <input type="text" id="first_name" name="first_name">
         </div>
         <div class="form-group">
           <label for="last_name">Last Name</label>
-          <input type="text" id="last_name" name="last_name" required>
+          <input type="text" id="last_name" name="last_name">
         </div>
         <div class="form-group">
           <label for="gender">Gender</label>
-          <select name="gender" required>
+          <select name="gender">
             <option value="">Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -28,36 +30,37 @@
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email">
         </div>
         <div class="form-group">
           <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone" required>
+          <input type="tel" id="phone" name="phone">
         </div>
         <div class="form-group">
           <label for="dob">Date of Birth</label>
-          <input type="date" id="dob" name="dob" required>
+          <input type="date" id="dob" name="dob">
         </div>
         <div class="form-group">
           <label for="address">Address</label>
-          <textarea name="address" id="address" required></textarea>
+          <textarea name="address" id="address"></textarea>
         </div>
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" required>
+          <input type="text" id="username" name="username">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
         </div>
         <div class="image">
           <label for="image">Profile Picture</label>
-          <label for="image"><i class="fa">&#xf030;</i></label>
+          <label for="image"><i class="fa fa-camera"></i></label>
           <input type="file" name="image" id="image">
         </div>
-        <button type="submit" name="submit">Register</button>
+        <button type="submit" name="submit" >Register</button>
       </form>
     </div>
+    <script src="registration.js"></script>
     <?php include('footer.php'); ?>
   </body>
 </html>

@@ -1,6 +1,4 @@
-<?php 
-	session_start();
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +6,11 @@
 	<link rel="stylesheet" type="text/css" href="homepage.css">
 </head>
 <body>
-	<?php include('header.php'); ?>
+	<!-- <?php include('header.php'); ?> -->
 
 	<?php include('product.php'); ?>
 
-	<?php include('footer.php'); ?>
+	<!-- <?php include('footer.php'); ?> -->
 
 </body>
 </html>

@@ -20,8 +20,11 @@ function showUserInfo(){
     }
 }
 
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+
 function updateUserInfo($first_name, $last_name, $phone, $address, $username){
-    require "connection.php";
+    require "../model/connection.php";
     $stmt = $conn->prepare("UPDATE userinfo SET firstname = ?, lastname = ?, phone = ?, address = ? WHERE username = ?");
     $stmt->bind_param("sssss", $first_name, $last_name, $phone, $address, $username);
     if ($stmt->execute()){
@@ -35,6 +38,63 @@ function updateUserInfo($first_name, $last_name, $phone, $address, $username){
     $conn->close();
 }
 
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 
+function login($username, $password){
+    require "../model/connection.php";
+    $sql = "SELECT password FROM userinfo WHERE username = ?";
+
+    $stmt = $conn -> prepare($sql);
+    $stmt->bind_param("s", $username);
+
+    if ($stmt -> execute() > 0) {
+        $stmt->bind_result($hashed_password);
+        $stmt->fetch();
+
+        if ($password === $hashed_password) {
+            // Successful login, set session variable
+            $_SESSION['username'] = $username;
+            $_SESSION['password'] = $password;
+            return true;
+            // header("Location: ../index.php");
+        } else {
+            // Incorrect password
+            return false;
+            // echo "Incorrect password!";
+        }
+        
+    } else {
+        // Incorrect username
+        return false;
+        // echo "Incorrect username!";
+    }
+    $stmt->close();
+    $conn->close();
+}
+
+
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+
+function registration($firstname, $lastname, $gender, $email, $phone, $dob, $address, $username, $password, $userPic){
+    require "../model/connection.php";
+    $sql = "INSERT INTO userinfo (firstname, lastname, gender, email, phone, dob, address, username, password, userPic)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssssssss", $first_name, $last_name, $gender, $email, $phone, $dob, $address, $username, $password, $new_img_name);
+    // $stmt->execute()
+
+    if ($stmt -> execute() > 0){
+        // $_SESSION['msg'] = "Profile updated successfully!";
+        return true;
+    }else{
+        // $_SESSION['msg'] = "Failed to update profile!";
+        return false;
+    }
+    $stmt->close();
+    $conn->close();
+}
 
 ?>

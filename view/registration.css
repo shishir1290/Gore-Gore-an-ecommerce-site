@@ -15,6 +15,17 @@ h1 {
   color: #333;
 }
 
+#registrationAlert {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffe6e6;
+  color: #cc0000;
+  text-align: center;
+  display: none;
+}
+
 /* Form Styles */
 
 .form-container {

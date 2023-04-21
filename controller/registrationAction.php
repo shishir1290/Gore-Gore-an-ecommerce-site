@@ -1,6 +1,6 @@
 <?php
  require "../model/connection.php";
-if(isset($_POST['submit'])){
+//if(isset($_POST['submit'])){
   // Get form data
   $first_name = $_POST['first_name'];
   $last_name = $_POST['last_name'];
@@ -11,6 +11,7 @@ if(isset($_POST['submit'])){
   $address = $_POST['address'];
   $username = $_POST['username'];
   $password = $_POST['password'];
+  $new_img_name = "";
 
   // Upload image
   
@@ -43,17 +44,33 @@ if(isset($_POST['submit'])){
     }
 
   }else {
-    echo "not submit";
+    $new_img_name = "";
   }
- 
 
-  $sql = "INSERT INTO userinfo (firstname, lastname, gender, email, phone, dob, address, username, password, userPic)
-  VALUES ('$first_name', '$last_name', '$gender', '$email', '$phone', '$dob', '$address', '$username', '$password', '$new_img_name')";
-  if (mysqli_query($conn, $sql)) {
-    header("Loaction: ../index.php");
-  } else {
-    echo "Error: " . $sql . "<br>";
+  if(empty($username)){
+    header("Location: ../view/registration.php");
+  }else{
+
+    require "../model/userDB.php";
+
+    $flag = login($username, $password);
+
+    if($flag === true){
+        echo "success";
+    }
+    else{
+        echo "Registration failed!";
+    }
   }
+
+//   $sql = "INSERT INTO userinfo (firstname, lastname, gender, email, phone, dob, address, username, password, userPic)
+//   VALUES ('$first_name', '$last_name', '$gender', '$email', '$phone', '$dob', '$address', '$username', '$password', '$new_img_name')";
+//   if (mysqli_query($conn, $sql)) {
+//     header("Loaction: ../index.php");
+//   } else {
+//     echo "Error: " . $sql . "<br>";
+//   }
+// }
   $conn->close();
-}
+//}
 ?>

@@ -29,7 +29,7 @@
          ?>
 	<div class="editProfile">
 		<h1 align="center">Edit Profile</h1>
-		<form action="../controlar/editProfileAction.php" method="post">
+		<form action="../controller/editProfileAction.php" method="post">
 		  <label for="fname">First Name:</label>
 		    <input type="text" id="fname" name="fname" value="<?php echo $first_name; ?>">
 		    

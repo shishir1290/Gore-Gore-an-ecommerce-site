@@ -1,4 +1,5 @@
 <?php
+//session_start(); 
 
 if (isset($_SESSION["username"])) {
 	$username = $_SESSION["username"];
@@ -22,8 +23,21 @@ if (isset($_SESSION["username"])) {
 					<li><a href="showCart.php" >Cart</a></li>
 					<li><a href="#" >About Us</a></li>
 					<li><a href="#" >Contact Us</a></li>
+					<li>
+						<div class="search-container">
+						  <form method="GET" action="product.php" >
+						  	<ul>
+						    	<li><input type="text" placeholder="Search.." name="search"></li>
+						    	<li><button type="submit" id="search">Submit</button></li>
+						    </ul>
+						  </form>
+						</div>
+					</li>
 				</ul>
+				
 			</nav>
+
+			
 			
 			<div class="profile-pic" onclick="showDropdown()" align="right">
 				<?php
@@ -33,7 +47,7 @@ if (isset($_SESSION["username"])) {
 						while ($row = $result->fetch_assoc()) {
 							if(!empty($row['userPic'])){
 			        ?>
-			        <img src="../controlar/uploads/<?php echo $row['userPic'];?>" alt="Profile Picture">
+			        <img src="../controller/uploads/<?php echo $row['userPic'];?>" alt="Profile Picture">
 			        <?php 
 			          }
 			        else{
@@ -46,7 +60,6 @@ if (isset($_SESSION["username"])) {
 				?>
 			</div>
 			
-			<!-- Dropdown menu -->
 			<div id="dropdown" class="dropdown">
 				<a href="profile.php">View Profile</a>
 				<a href="setting.php">Settings</a>
@@ -71,7 +84,7 @@ if (isset($_SESSION["username"])) {
 </html>
 
 <?php
-	} else {
+} else {
 ?>
 <html>
 <head>
@@ -92,8 +105,20 @@ if (isset($_SESSION["username"])) {
 					<li><a href="#">Contact Us</a></li>
 					<li><a href="login.php" class="cta">Sign In</a></li>
 					<li><a href="registration.php" class="cta">Sign Up</a></li>
+					<li>
+						<div class="search-container">
+						  <form method="GET" action="product.php" >
+						    <ul>
+						    	<li><input type="text" placeholder="Search.." name="search"></li>
+						    	<li><button type="submit" id="search">Submit</button></li>
+						    </ul>
+						  </form>
+						</div>
+					</li>
 				</ul>
 			</nav>
+
+			
 			
 			<div class="profile-pic" onclick="showDropdown()" align="right">
 				
@@ -101,7 +126,7 @@ if (isset($_SESSION["username"])) {
 			
 			</div>
 			
-			<!-- Dropdown menu -->
+			
 			<div id="dropdown" class="dropdown">
 				<a href="profile.php">View Profile</a>
 				

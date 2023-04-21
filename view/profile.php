@@ -37,7 +37,7 @@ if (isset($_SESSION["username"])) {
                       $img_name = $rowAgain['userPic'];
               if(!empty($img_name)){
             ?>
-                <img src="../controlar/uploads/<?php echo $img_name;?>" alt="Profile Picture">
+                <img src="../controller/uploads/<?php echo $img_name;?>" alt="Profile Picture">
                 <form method="post" enctype="multipart/form-data" action="../model/image_update.php" id="form">
                 <div class="camera-button">
                   <input type="hidden" name="username" value="<?php echo $_SESSION['username']; ?>">

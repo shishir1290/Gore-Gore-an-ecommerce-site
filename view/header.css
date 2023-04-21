@@ -130,3 +130,38 @@ nav ul li a:hover {
   color: #00ffff;
   background-color: #333;
 }
+
+
+.search-container #search {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.search-container #search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.search-container #search #searchBox {
+  text-transform: scale(1.2);
+  background-color: #333;
+  color: #00ffff;
+}
+
+ .search-container #search {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-container #search:hover {
+  background-color: #45a049;
+}
