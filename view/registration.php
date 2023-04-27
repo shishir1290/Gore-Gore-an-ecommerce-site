@@ -4,14 +4,16 @@
     <title>Registration Form</title>
     <link rel="stylesheet" type="text/css" href="registration.css">
     <link rel="stylesheet" href="css/all.css">
+    
   </head>
   <body>
     <?php include('header.php'); ?>
     <div class="form-container">
       <h1 align="center">Registration Form</h1>
-      <p id="registrationAlert"></p>
-      <form method="post" action="../controller/registrationAction.php" enctype="multipart/form-data" novalidate id="registrationform" onsubmit="return validateForm();">
-        
+      
+      <form method="post" action="../controller/registrationAction.php" enctype="multipart/form-data" id="registrationForm" onsubmit="return registrationForm();" novalidate>
+        <p id="Registration"></p>
+
         <div class="form-group">
           <label for="first_name">First Name</label>
           <input type="text" id="first_name" name="first_name">
@@ -52,12 +54,19 @@
           <label for="password">Password</label>
           <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
         </div>
+        <div >
+          <label class="switch">
+            <input type="checkbox" id="showpassword" onclick="myFunction()">
+            <span class="slider round"></span>
+          </label>
+          <p>Show Password</p>
+        </div>
         <div class="image">
           <label for="image">Profile Picture</label>
           <label for="image"><i class="fa fa-camera"></i></label>
           <input type="file" name="image" id="image">
         </div>
-        <button type="submit" name="submit" >Register</button>
+          <button type="submit" name="submit" >Register</button>
       </form>
     </div>
     <script src="registration.js"></script>

@@ -13,10 +13,10 @@
       include('header.php'); 
       include('navBar.php');
     ?>
-    <p id="changePass"></p>
     <div class="form-container">
       <h1 align="center">Change Password</h1>
       <form method="post" action="../controller/changePasswordAction.php" novalidate id="changePassword" onsubmit="return changePassword();">
+        <p id="Pass"></p>
         <div class="form-group">
           <label for="currentPassword">Old Password</label>
           <input type="password" id="currentPassword" name="currentPassword">
@@ -32,6 +32,7 @@
         <input type="submit" value="Change Password">
       </form>
     </div>
+    <script src="changePassword.js"></script>
     <?php include('footer.php'); ?>
   </body>
 </html>

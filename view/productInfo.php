@@ -62,8 +62,11 @@
     </form>
 
     
-    <form method="post" action="buyProduct.php" class="BuyNow" novalidate>
-        <input type="hidden" name="product_id" value="<?php echo $productId; ?>">
+    <form action="buyProduct.php" class="BuyNow" novalidate>
+        <input type="hidden" name="pic" value="<?php echo $product_pic; ?>">
+        <input type="hidden" name="product_price" value="<?php echo $price; ?>">
+        <input type="hidden" name="product_name" value="<?php echo $productName; ?>">
+        <input type="hidden" name="productId" value="<?php echo $productId; ?>">
         <input type="submit" name="BuyNow" value="Buy Now">
     </form>
   

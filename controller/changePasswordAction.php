@@ -23,7 +23,7 @@ $result = $stmt->get_result();
 
 // Check if the result contains a row
 if ($result->num_rows == 0) {
-  die("Product not found.");
+  die("User not found.");
 }
 
 // Fetch the password from the result
@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
   $current_password = $_POST['currentPassword'];
   $new_password = $_POST['newPassword'];
   $confirm_password = $_POST['confirmPassword'];
+  if(isset($current_password) && isset($new_password) && isset($confirm_password)){
 
   // Check if the current password is correct
   if ($current_password != $password) {
@@ -58,6 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
       die("Error updating password: " . $stmt->error);
     }
   }
+}else{
+  header("Location: ../view/changePassword.php");
+}
 }
 
 // Close the prepared statement

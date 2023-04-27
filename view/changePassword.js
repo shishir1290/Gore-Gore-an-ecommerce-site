@@ -1,33 +1,34 @@
-function changePassword(changePassword) {
-    var currentPassword = document.getElementById("currentPassword").value;
-    var newPassword = document.getElementById("newPassword").value;
-    var confirmPassword = document.getElementById("confirmPassword").value;
-    
-    if (confirmPassword == "" && newPassword == "" && confirmPassword == "") {
-      document.getElementById("changePass").innerHTML = "Please fill in all fields.";
-      document.getElementById("changePass").style.display = "block";
-        
-      return false;
-    }
 
-    if (confirmPassword == "") {
-      document.getElementById("changePass").innerHTML = "Please fill current password.";
-      document.getElementById("changePass").style.display = "block";
-        
-      return false;
-    }
+function changePassword() {
+  var currentPassword = document.getElementById("currentPassword").value;
+  var newPassword = document.getElementById("new_password").value;
+  var confirmPassword = document.getElementById("confirm_password").value;
 
-    if (newPassword == "") {
-      document.getElementById("changePass").innerHTML = "Please fill new password.";
-      document.getElementById("changePass").style.display = "block";
-        
-      return false;
-    }
+  var error = "";
 
-    if (confirmPassword == "") {
-      document.getElementById("changePass").innerHTML = "Please fill confirm password.";
-      document.getElementById("changePass").style.display = "block";
-        
-      return false;
-    }
+if (currentPassword == "" || newPassword == "" || confirmPassword =="") {
+    error = "\nPlease fill up all the information.\n";
+    document.getElementById("Pass").classList.add("error");
+    document.getElementById("Pass").style.display = "block";
+  } 
+  else if(newPassword != confirmPassword){
+    error = "\nNew password and confirm password are not same.\n";
+    document.getElementById("Pass").classList.add("error");
+    document.getElementById("Pass").style.display = "block";
   }
+
+  else {
+    document.getElementById("Pass").classList.remove("error");
+    alert("Password change successfully!");
+  }
+
+
+
+
+  if (error != "") {
+    document.getElementById("Pass").innerHTML = error;
+    return false;
+  } else {
+    return true;
+  }
+}

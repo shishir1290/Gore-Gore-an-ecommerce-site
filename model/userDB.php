@@ -79,22 +79,26 @@ function login($username, $password){
 
 function registration($firstname, $lastname, $gender, $email, $phone, $dob, $address, $username, $password, $userPic){
     require "../model/connection.php";
+    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+
     $sql = "INSERT INTO userinfo (firstname, lastname, gender, email, phone, dob, address, username, password, userPic)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssssss", $first_name, $last_name, $gender, $email, $phone, $dob, $address, $username, $password, $new_img_name);
-    // $stmt->execute()
+    $stmt->bind_param("ssssssssss", $firstname, $lastname, $gender, $email, $phone, $dob, $address, $username, $password, $userPic);
 
     if ($stmt -> execute() > 0){
         // $_SESSION['msg'] = "Profile updated successfully!";
+        $stmt->close();
+        $conn->close();
         return true;
     }else{
         // $_SESSION['msg'] = "Failed to update profile!";
+        $stmt->close();
+        $conn->close();
         return false;
     }
-    $stmt->close();
-    $conn->close();
 }
+
 
 ?>

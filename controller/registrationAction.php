@@ -1,9 +1,10 @@
 <?php
- require "../model/connection.php";
+session_start();
+ //require "../model/connection.php";
 //if(isset($_POST['submit'])){
   // Get form data
-  $first_name = $_POST['first_name'];
-  $last_name = $_POST['last_name'];
+  $firstname = $_POST['first_name'];
+  $lastname = $_POST['last_name'];
   $gender = $_POST['gender'];
   $email = $_POST['email'];
   $phone = $_POST['phone'];
@@ -53,24 +54,14 @@
 
     require "../model/userDB.php";
 
-    $flag = login($username, $password);
+    $flag = registration($firstname, $lastname, $gender, $email, $phone, $dob, $address, $username, $password, $new_img_name);
 
     if($flag === true){
+      header("Location: ../view/login.php");
         echo "success";
     }
     else{
         echo "Registration failed!";
     }
   }
-
-//   $sql = "INSERT INTO userinfo (firstname, lastname, gender, email, phone, dob, address, username, password, userPic)
-//   VALUES ('$first_name', '$last_name', '$gender', '$email', '$phone', '$dob', '$address', '$username', '$password', '$new_img_name')";
-//   if (mysqli_query($conn, $sql)) {
-//     header("Loaction: ../index.php");
-//   } else {
-//     echo "Error: " . $sql . "<br>";
-//   }
-// }
-  $conn->close();
-//}
 ?>

@@ -21,8 +21,8 @@ if (isset($_SESSION["username"])) {
 				<ul>
 					<li><a href="../index.php" >Home</a></li>
 					<li><a href="showCart.php" >Cart</a></li>
-					<li><a href="#" >About Us</a></li>
-					<li><a href="#" >Contact Us</a></li>
+					<li><a href="about.php" >About Us</a></li>
+					<li><a href="contact.php" >Contact Us</a></li>
 					<li>
 						<div class="search-container">
 						  <form method="GET" action="product.php" >
@@ -101,8 +101,8 @@ if (isset($_SESSION["username"])) {
 				<ul>
 					<li><a href="../index.php">Home</a></li>
 					<li><a href="showCart.php">Cart</a></li>
-					<li><a href="#">About Us</a></li>
-					<li><a href="#">Contact Us</a></li>
+					<li><a href="about.php">About Us</a></li>
+					<li><a href="contact.php">Contact Us</a></li>
 					<li><a href="login.php" class="cta">Sign In</a></li>
 					<li><a href="registration.php" class="cta">Sign Up</a></li>
 					<li>

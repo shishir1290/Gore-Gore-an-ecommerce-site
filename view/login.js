@@ -30,7 +30,6 @@ function validateForm(loginform) {
           
           if (resp === 'success') {
               window.location.href = '../index.php';
-              alert("Login sucessfully!");
           } else {
               document.getElementById('login1').innerHTML = resp;
               document.getElementById('login1').style.display = 'block';
@@ -43,13 +42,6 @@ function validateForm(loginform) {
 
 
     }
-    // else{
-    //   // header("Location: ../index.php");
-
-    //   window.location.href = "../index.php";
-    //   return true;
-
-    // }
     
 
 }
